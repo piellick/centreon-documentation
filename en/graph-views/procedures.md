@@ -6,7 +6,7 @@ title: Procedures
 This chapter describes advanced procedures for configuring your Centreon MAP
 system.
 
-## Monitoring your Centreon MAP server after installation
+## 1. Monitoring your Centreon MAP server after installation
 
 Centreon provides a plugin pack and a plugin to monitor your Centreon MAP
 server.
@@ -97,7 +97,7 @@ monitored.
 > - If your server is running in http mode: http://<IP_SERVER\_MAP>:8080/centreon-studio/api/beta/actuator/health.
 > - If your server is running in HTTPS mode: https://<IP_SERVER_MAP>:8443/centreon-studio/api/beta/actuator/health.
 
-## Migrating your Centreon MAP server
+## 2. Migrating your Centreon MAP server
 
 This section explains how to move Centreon MAP server over to another server.
 This task may be useful if you need to migrate your reporting server from CentOS
@@ -127,7 +127,7 @@ Start Centreon Map service on the new Centreon MAP servers:
 
     systemctl start centreon-map
 
-## Centreon MAP configuration files
+## 3. Centreon MAP configuration files
 
 > We advise you against editing the configuration files manually unless you are
 > an experienced user.
@@ -145,7 +145,7 @@ If these files are modified, the server must be restarted with the command:
 > Do not delete any variables in these files\! This may cause the server to
 > malfunction or not to start up.
 
-## HTTPS/TLS Configuration
+## 4. HTTPS/TLS Configuration
 
 ### HTTPS/TLS configuration with a recognized key
 
@@ -214,11 +214,11 @@ inside "/etc/centreon-studio/studio-config.properties"
 
 ### Activate TLS profile of Centreon MAP service
 
-1) Stop Centreon MAP service:
+1. Stop Centreon MAP service:
 ``` shell
 systemctl stop centreon-map
 ```
-2) Edit the file "/etc/centreon-studio/centreon-map.conf", adding ",tls" after "prod" profile
+2. Edit the file "/etc/centreon-studio/centreon-map.conf", adding ",tls" after "prod" profile
 ``` shell
 RUN_ARGS="--spring.profiles.active=prod,tls"
 ```
@@ -232,7 +232,7 @@ For the requirement of changing service's port, refer to :ref:`change_server_por
 > Don't forget to modify the URL on Centreon side in 
 > **Administration** > **Extensions** > **Map** > **Options** => **Map server address** 
 
-## Broker configuration
+## 5. Broker configuration
 
 An additional broker output for Centreon central (centreon-broker-master) has
 been created during the installation. You can check it in your central Centreon
@@ -265,7 +265,7 @@ output](https://documentation.centreon.com/docs/centreon-broker/en/latest/user/m
 
 #### Map server side configuration
 
-First of all, you should `activate HTTPS/TLS of Centreon MAP service <tls_configuration.html>`_
+First of all, you should [activate HTTPS/TLS of Centreon MAP service](https://docs.centreon.com/current/en/graph-views/procedures.html#httpstls-configuration)
 
 Than, set the following parameter in map server configuration at “/etc/centreon-studio/studio-config.properties“ to enable TLS socket connection with broker :
 
@@ -307,7 +307,7 @@ Edit the file  "/etc/centreon-studio/centreon-map.conf", replace ",tls" by ",tls
 
 If the broker public certificate is signed with a recognized CA, the JVM default trust store "cacerts (/etc/pki/java/cacerts)" will be used. Nothing to configure for Centreon MAP service
 
-## Backup of Centreon MAP server
+## 6. Backup of Centreon MAP server
 
 ### Saved items
 
@@ -377,7 +377,7 @@ To restore **centreon\_studio** database, run the following command:
     mysql -h <db_host> -u <db_user> -p<db_password> <db_name> < centreon-map-server.dump
     systemctl start centreon-map
 
-## Change Centreon Map server port
+## 7. Change Centreon Map server port
 
 By default, the Centreon MAP server is listening and sending information through
 the port 8080. If you set the SSL (see [HTTPS/TLS
@@ -412,7 +412,7 @@ your web browser:
 
     http://\<IP\_MAP\_SERVER\>:\<NEW\_PORT\>/centreon-studio/api/beta/actuator/health
 
-## Define port below 1024
+## 8. Define port below 1024
 
 You may want to setup your server to listen and send data through ports below
 1024, such as port 80 or 443 (as these ports are rarely blocked by a firewall).
