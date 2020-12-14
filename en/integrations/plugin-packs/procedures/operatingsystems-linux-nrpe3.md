@@ -300,3 +300,12 @@ And restart the daemon:
 systemctl restart centreon-nrpe3.service
 ```
 
+#### PATH debug - /usr/lib64/nagios/plugins/check_centreon_nrpe3: No such file or directory
+
+Check the installation PATH of `check_centreon_nrpe3`. If it's `/usr/lib/nagios/plugins/`, you must create a symlink to `/usr/lib64/nagios/plugins/` :
+
+```
+ln -s /usr/lib/nagios/plugins/check_centreon_nrpe3 /usr/lib64/nagios/plugins/check_centreon_nrpe3
+```
+
+
