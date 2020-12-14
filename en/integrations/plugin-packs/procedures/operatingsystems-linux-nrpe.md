@@ -1,6 +1,6 @@
 ---
 id: operatingsystems-linux-nrpe
-title: Linux NRPE
+title: Linux NRPE (deprecated)
 ---
 
 | Current version | Status | Date |
